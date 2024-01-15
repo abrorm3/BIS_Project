@@ -1,13 +1,6 @@
-const express = require('express');
+const express = require("express");
+const controller = require("../controllers/boothController");
 const router = express.Router();
-const Booth = require('../models/boothSchema');
 
-router.get('/', async (req, res) => {
-  // ... your get route logic
-});
-
-router.post('/', async (req, res) => {
-  // ... your post route logic
-});
-
+router.get("/get", controller.fetchBooths);
 module.exports = router;
