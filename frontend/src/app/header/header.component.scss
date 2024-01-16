@@ -1,0 +1,49 @@
+.heading-frame {
+  display: grid;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  grid-template-columns: max-content auto;
+  grid-template-rows: auto max-content;
+  background: #333 url('/assets/icons/clipboard.png')center 30%;
+  background-size: 30px;
+  background-repeat: no-repeat;
+  color: white;
+  width: 105px;
+  height: 65px;
+  padding: 0.3rem;
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 1px solid white;
+  }
+  &:before {
+    grid-row: 1 / 2;
+    border-right: none;
+    border-bottom: none;
+  }
+  &:after {
+    grid-row: 1 / span 2;
+    border-left: none;
+  }
+  h2 {
+    margin: 0.5rem 0.5rem -0.25rem 0;
+    font-family: 'Pragati Narrow', sans-serif;
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+}
+
+.navigation-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 6;
+}
+.logo{
+  flex: 1;
+  cursor: pointer;
+}
+
