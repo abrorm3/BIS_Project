@@ -63,6 +63,10 @@ const boothSchema = new mongoose.Schema({
     photo: {
         type: String,
         required: true
+    },
+    adminName:{
+        type: String,
+        required: true
     }
 });
 
