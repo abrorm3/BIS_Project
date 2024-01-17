@@ -14,7 +14,6 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   constructor(private router: Router) {}
   ngOnInit(): void {
-    this.navigateTo('ss');
   }
   navigateTo(to: string) {
     this.router.navigate([to]);

@@ -1,0 +1,22 @@
+.arrow-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow-text::before,
+.arrow-text::after {
+  content: '';
+  display: inline-block;
+  width: 100px;
+  height: 1px;
+  background-color: black;
+}
+
+.arrow-text::before {
+  margin-right: 4px;
+}
+
+.arrow-text::after {
+  margin-left: 4px;
+}
