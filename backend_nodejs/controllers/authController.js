@@ -195,18 +195,18 @@ class authController {
         expiresIn: "20m",
       });
 
-      const resetLink = `${uri}/reset-password/${oldUser._id}/${token}`;
+      const resetLink = `${uri}/admin/reset-password/${oldUser._id}/${token}`;
 
       var transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-          user: "thereviewapp.dev@gmail.com",
-          pass: "nfatnzhdtlyhatll",
+          user: "budkauz.dev@gmail.com",
+          pass: "yipc saop nymn glis",
         },
       });
 
       var mailOptions = {
-        from: "thereviewapp.dev@gmail.com",
+        from: "budkauz.dev@gmail.com",
         to: oldUser.email,
         subject: "Password Reset",
         text: `Click on the following link to reset your password: ${resetLink}\n\nIf you didn't make this request, please ignore this email.`,
@@ -479,6 +479,7 @@ class authController {
       return res.status(500).json({ message: "Server error" });
     }
   }
+
 }
 
 module.exports = new authController();

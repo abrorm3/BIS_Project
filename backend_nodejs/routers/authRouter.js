@@ -17,25 +17,26 @@ router.post(
   controller.registration
 );
 router.post("/update-username", controller.updateUsername);
-router.post("/update-user-info", controller.updateUserInfo)
+router.post("/update-user-info", controller.updateUserInfo);
 router.get("/check-username/:username", controller.checkUsernameAvailability);
-router.post("/forgot-password",controller.forgotPassword);
-router.get("/reset-password/:id/:token", controller.resetPassword)
+router.post("/forgot-password", controller.forgotPassword);
+router.get("/reset-password/:id/:token", controller.resetPassword);
 router.post("/reset-password/:id/:token", controller.postResetPassword);
 router.post("/login", controller.login);
 router.get("/users", (req, res) => {
   if (req.isBlocked) {
     return res.status(403).json({ message: "User is blocked" });
   }
-  controller.getUsers(req, res); // Call the getUsers function from the controller
+  controller.getUsers(req, res);
 });
 router.get("/user/:userId", controller.getUser);
-router.get("/username/:username", controller.getUsername)
+router.get("/username/:username", controller.getUsername);
 router.put("/users/:userId/block", controller.blockUser);
 router.put("/users/block", controller.blockUsers);
 router.put("/users/unblock", controller.unblockUsers);
 router.delete("/users/:userId/delete", controller.deleteUser);
-router.get("/check-admin/:userId",controller.isAdmin)
-router.post("/make-admin", controller.makeAdmin)
+router.get("/check-admin/:userId", controller.isAdmin);
+router.post("/make-admin", controller.makeAdmin);
+
 
 module.exports = router;

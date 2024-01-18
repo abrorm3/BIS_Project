@@ -9,6 +9,8 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ManagementPanelComponent } from './admin-panel/management-panel/management-panel.component';
+import { ForgotPasswordComponent } from './admin-panel/password-recovery/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './admin-panel/password-recovery/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { ManagementPanelComponent } from './admin-panel/management-panel/managem
     AdminPanelComponent,
     HeaderComponent,
     HttpClientModule,
-    ManagementPanelComponent
+    ManagementPanelComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]

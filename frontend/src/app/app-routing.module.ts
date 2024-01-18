@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './main/main.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ManagementPanelComponent } from './admin-panel/management-panel/management-panel.component';
+import { ForgotPasswordComponent } from './admin-panel/password-recovery/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './admin-panel/password-recovery/reset-password/reset-password.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
@@ -12,6 +14,8 @@ const routes: Routes = [
     component: AdminPanelComponent,
   },
   { path: 'admin/management', component: ManagementPanelComponent },
+  { path: 'admin/forgot-password', component: ForgotPasswordComponent },
+  { path: 'admin/reset-password/:id/:token', component: ResetPasswordComponent },
 ];
 
 @NgModule({

@@ -136,6 +136,8 @@ export class AdminPanelComponent {
     );
   }
   navigateToForgotPassword() {
-    this.router.navigate(['/forgot-password']);
+    this.router.navigate(['/admin/forgot-password']);
+    console.log('asdas');
+
   }
 }

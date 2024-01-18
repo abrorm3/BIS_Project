@@ -9,10 +9,10 @@ const boothSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    purposeType: {
-        type: String,
-        required: true,
-        enum: ['coffee-shop', 'security', 'market']
+    businessType: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'BusinessTypes',
+        required: false
     },
     dimensions: {
         width: {
