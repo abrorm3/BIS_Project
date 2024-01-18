@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ManagementPanelComponent } from './admin-panel/management-panel/management-panel.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     AdminPanelComponent,
     HeaderComponent,
-    HttpClientModule
+    HttpClientModule,
+    ManagementPanelComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
 
 @Component({
   selector: 'app-admin-panel',
@@ -24,7 +25,8 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     MatFormFieldModule,
     MatIconModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule
   ],
   templateUrl: './admin-panel.component.html',
   styleUrls: ['./admin-panel.component.scss'],
@@ -68,7 +70,7 @@ export class AdminPanelComponent {
         next: (resData: AuthResponse) => {
           // console.log('Logged in!', resData.token, resData.userId);
           this.isLoading.set(false);
-          this.router.navigate(['/feed']);
+          this.router.navigate(['/admin/management']);
           this.userId.set(this.authService.getUserId());
         },
         error: (errorMessage: any) => {
@@ -113,7 +115,7 @@ export class AdminPanelComponent {
     this.authService.updateUsername(this.userId(), username).subscribe({
       next: (response) => {
         console.log('Update successful:', response);
-        this.router.navigate(['/feed']);
+        this.router.navigate(['/admin/management']);
       },
       error: (error) => {
         console.error('Update failed:', error);
