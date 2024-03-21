@@ -1,3 +1,41 @@
+
 #container{
-  padding: 30px 60px;
+  padding: 30px 160px;
+}
+#intro{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  height: 60vh;
+}
+#intro .intro-info{
+  flex: 1.5;
+  width: 550px;
+  margin-bottom: 4rem;
+}
+.main-image{
+  flex: 2;
+  width: 60%;
+}
+.mat-raised-button{
+  color:red;
+}
+.action-main{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  button{
+    flex:1;
+  }
+  p{
+    flex:2;
+    span{
+      cursor: pointer;
+      background-color:#e31a22;
+      color:#fff;
+      padding: 0 3px;
+      border-radius: 5px;
+    }
+  }
 }
