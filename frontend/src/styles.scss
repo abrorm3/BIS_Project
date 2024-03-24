@@ -2,19 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
-html,body,blockquote,code,h1,h2,h3,h4,h5,h6,p,pre{margin:0;padding:0}
-button,fieldset,form,input,legend,textarea,select{margin:0;padding:0}
-fieldset{border:0}
-a,a *{cursor:pointer}
-div{margin:0;padding:0;background-color:transparent;text-align:left}
-hr,img{border:0}
-applet,iframe,object{border:0;margin:0;padding:0}
-button,input[type=button],input[type=image],input[type=reset],input[type=submit],label{cursor:pointer;}
-ul,li{list-style:none;margin:0;padding:0;}
-strong{font-weight:bold;}
-em{font-style:italic;}
+html,
+body,
+blockquote,
+code,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+pre {
+  margin: 0;
+  padding: 0;
+}
+button,
+fieldset,
+form,
+input,
+legend,
+textarea,
+select {
+  margin: 0;
+  padding: 0;
+}
+fieldset {
+  border: 0;
+}
+a,
+a * {
+  cursor: pointer;
+}
+div {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  text-align: left;
+}
+hr,
+img {
+  border: 0;
+}
+applet,
+iframe,
+object {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+button,
+input[type="button"],
+input[type="image"],
+input[type="reset"],
+input[type="submit"],
+label {
+  cursor: pointer;
+}
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+}
 
-@import '../node_modules/font-awesome/css/font-awesome.css';
+@import "../node_modules/font-awesome/css/font-awesome.css";
 /* Customize Angular Material theme colors */
 .mat-color-primary {
   background: #3f51b5;
@@ -31,9 +89,15 @@ em{font-style:italic;}
   color: #fff;
 }
 
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: rgb(32 38 52); }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: rgb(32 38 52);
+}
 
 /* Change button color to blue */
 .angular-editor-toolbar button {
@@ -44,7 +108,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-
   margin: 0 2px;
   cursor: pointer;
 }
-.angular-editor-toolbar{
+.angular-editor-toolbar {
   /* width: 90%; */
   height: 80px;
   /* margin: 0 auto; */
@@ -69,41 +133,30 @@ h2 {
 h3 {
   font-size: 18.72px; /* Change this to your desired font size */
 }
-h4{
+h4 {
   font-size: 16px;
 }
-h5{
+h5 {
   font-size: 13.28px;
 }
-h6{
+h6 {
   font-size: 10.72px;
 }
-.menuBtn{
+.menuBtn {
   border-left: 1px solid #fff;
 }
-.gray-phrase{
-  color:#6a6f76;
+.gray-phrase {
+  color: #6a6f76;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-.mat-mdc-button-touch-target{
-  background-color: rgb(27 33 44);
-  border-radius: 3px;
+html,
+body {
+  height: 100%;
 }
-.mdc-button__label{
-  color:#fff;
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-
-.action-main button:hover{
-  .mat-mdc-button-touch-target{
-    background-color:#fff;
-    border-radius: 3px;
-  }
-  .mdc-button__label{
-    color:rgb(27 33 44);
-  }
-}
-#container{
+#container-general {
   padding: 30px 160px;
 }
