@@ -9,7 +9,8 @@ interface Dimensions {
 export interface Project {
   title: string;
   location?: string;
-  businessType?: Types.ObjectId;
+  imageUrl: string;
+  businessType?: string;
   dimensions: Dimensions;
   doorType: string;
   foundation: string;
@@ -21,4 +22,6 @@ export interface Project {
   price: number;
   photo: string;
   adminName: string;
+  productionTime?: number;
+  inStock?: boolean;
 }

@@ -1,8 +1,3 @@
 <div id="container">
 <h1>Sizes and prices</h1>
-<div *ngFor="let card of projects()">
-  <img [src]="card." alt="">
-  <h3>{{card.title}}</h3>
-
-</div>
-</div>
+<app-project-card [projects]="projects()" [currency]="selectedCurrency()"></app-project-card>

@@ -1,0 +1,19 @@
+<div class="card-container" *ngFor="let card of projects">
+  <img [src]="card.imageUrl" alt="">
+  <h3 class="title px-1">{{card.title}}</h3>
+  <div class="project-details px-1">
+    <div>
+      <p>Sizes: {{card.dimensions.depth}} x {{card.dimensions.height}} m</p>
+      <p>Height: {{card.dimensions.height}} m</p>
+      <p>Type: {{card.businessType}}</p>
+    </div>
+    <div>
+      <p>Production time:</p>
+      <p class="text-center text-lg"> {{card.inStock? 'Available!':card.productionTime+' days'}} </p>
+    </div>
+    <div>
+      <p>Price: </p>
+      <p>{{card.price? card.price : 'Clarify'}}{{currency}}</p>
+    </div>
+  </div>
+</div>

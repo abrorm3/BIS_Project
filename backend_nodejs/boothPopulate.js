@@ -8,6 +8,7 @@ const uri = process.env.mongoDBURL;
 const dataToInsert = [
   {
       title: 'Sample Booth 1',
+      imageUrl: 'https://frankfurt.apollo.olxcdn.com/v1/files/2shxqbcj0ari2-UZ/image;s=750x1000',
       location: 'Sample Location 1',
       purposeType:'coffee-shop',
       dimensions:{
@@ -23,13 +24,12 @@ const dataToInsert = [
       facade:'металлокассеты с порошковой покраской в комбинации с деревянными элементами',
       electricity:'полный комплект электрики 380 вольт, УЗО на каждую розетку',
       price:'2600',
-      photo:'test'
-
+      photo:'test',
+      adminName:'Abror',
+      businessType:'coffee-shop',
+      productionTime: 12,
+      inStock: false,
   },
-  // {
-  //     title: 'Sample Booth 2',
-  //     location: 'Sample Location 2',
-  // },
 ];
 
 const populateDatabase = async () => {

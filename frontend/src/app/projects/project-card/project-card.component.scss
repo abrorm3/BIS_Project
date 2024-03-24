@@ -1,0 +1,28 @@
+img{
+  width: 410px;
+  height: 240px;
+  object-fit:cover;
+}
+.card-container{
+  background-color: #fff;
+  width: 410px;
+  height: 405px;
+  line-height: 1.5;
+}
+.title{
+  margin-top:10px;
+  font-size: 1.5rem;
+  height: 80px;
+  line-height: 1;
+  font-weight: 500;
+}
+.project-details{
+  border-top:1px solid #282626;
+  padding-top:10px;
+  margin:0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap:2px;
+  font-size: 0.8rem;
+}

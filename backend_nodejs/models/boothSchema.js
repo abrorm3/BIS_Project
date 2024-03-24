@@ -9,6 +9,7 @@ const boothSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    imageUrl:{type:String},
     businessType: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'BusinessTypes',
@@ -67,6 +68,18 @@ const boothSchema = new mongoose.Schema({
     adminName:{
         type: String,
         required: true
+    },
+    businessType: {
+        type:String,
+        required: true
+    },
+    productionTime: {
+        type: Number,
+        required:false
+    },
+    inStock:{
+        type: Boolean,
+        required: false
     }
 });
 

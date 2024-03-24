@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ManagementPanelComponent } from './admin-panel/management-panel/management-panel.component';
 import { ForgotPasswordComponent } from './admin-panel/password-recovery/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './admin-panel/password-recovery/reset-password/reset-password.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { ResetPasswordComponent } from './admin-panel/password-recovery/reset-pa
     ManagementPanelComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
+    provideFirebaseApp(() => initializeApp({"projectId":"budkauz-ceced","appId":"1:988605526370:web:075e803da811656b107c3b","storageBucket":"budkauz-ceced.appspot.com","apiKey":"AIzaSyBZ74zcGu1AL4nmGvsDDJktnmGHMcVX0k4","authDomain":"budkauz-ceced.firebaseapp.com","messagingSenderId":"988605526370","measurementId":"G-VWNSQ8GGD1"})),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent]
