@@ -12,6 +12,20 @@ class BoothController {
       res.status(500).json({ error: "Internal Server Error" });
     }
   }
+  async fetchBooth(req, res) {
+    try {
+      const boothId = req.params.id;
+      const booth = await Booth.findById( boothId );
+      if (!booth) {
+        return res.status(404).json({ error: "Booth not found" });
+      }
+      res.json(booth);
+    } catch (error) {
+      console.error("Error fetching booth:", error);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  }
+
   async populateBusinessTypes() {
     const businessTypesData = [
       {

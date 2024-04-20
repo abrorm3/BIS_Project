@@ -5,7 +5,7 @@ const BusinessTypesSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    enum: ["coffee-shop", "security", "market", "cafe", "other"],
+    enum: ["coffee-shop", "security", "market", "cafe","food-truck", "other"],
   },
   description: {
     type: String,

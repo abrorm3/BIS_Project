@@ -15,4 +15,9 @@ export class ProjectsService {
   fetchProjects(): Observable<Project[]> {
     return this.http.get<Project[]>(`${this.backend}/api/booths/get`);
   }
+  fetchProjectDetails(id:string): Observable<Project>{
+    console.log(id);
+
+    return this.http.get<Project>(`${this.backend}/api/booths/getOne/${id}`);
+  }
 }

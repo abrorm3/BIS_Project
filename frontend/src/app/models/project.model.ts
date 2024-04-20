@@ -7,9 +7,10 @@ interface Dimensions {
 }
 
 export interface Project {
+  _id: string;
   title: string;
   location?: string;
-  imageUrl: string;
+  imageUrls: string[];
   businessType?: string;
   dimensions: Dimensions;
   doorType: string;

@@ -22,8 +22,6 @@ ngOnInit(): void {
   getProjects(){
     this.projectsService.fetchProjects().subscribe((projects)=>{
       this.projects.set(projects);
-      console.log(this.projects());
-
     });
   }
 }

@@ -9,7 +9,7 @@ const boothSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    imageUrl:{type:String},
+    imageUrls:{type:[String]},
     businessType: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'BusinessTypes',

@@ -6,11 +6,13 @@ import { ManagementPanelComponent } from './admin-panel/management-panel/managem
 import { ForgotPasswordComponent } from './admin-panel/password-recovery/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './admin-panel/password-recovery/reset-password/reset-password.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { BoothDetailsComponent } from './booth-details/booth-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
   { path: 'main', component: MainComponent },
   {path:'projects', component: ProjectsComponent },
+  {path:'details/:title/:id', component: BoothDetailsComponent},
   {
     path: 'admin',
     component: AdminPanelComponent,
