@@ -20,6 +20,7 @@ export interface Project {
   floor: string;
   facade: string;
   electricity?: string;
+  additionalFeatures?:string[];
   price: number;
   photo: string;
   adminName: string;

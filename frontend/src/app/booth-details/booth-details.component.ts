@@ -2,11 +2,12 @@ import { Component, OnInit, signal } from '@angular/core';
 import { ProjectsService } from '../projects/projects.service';
 import { ActivatedRoute } from '@angular/router';
 import { Project } from '../models/project.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-booth-details',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './booth-details.component.html',
   styleUrl: './booth-details.component.scss',
 })

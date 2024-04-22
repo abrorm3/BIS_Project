@@ -1,1 +1,4 @@
-<h2></h2>
+<h2>{{ booth()?.title }}</h2>
+<h4 *ngIf="booth()?.inStock">The pavilion is in stock and available for delivery</h4>
+
+<img [src]="booth()?.imageUrls" alt="">
