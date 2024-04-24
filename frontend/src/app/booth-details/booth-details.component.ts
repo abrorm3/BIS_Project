@@ -3,11 +3,12 @@ import { ProjectsService } from '../projects/projects.service';
 import { ActivatedRoute } from '@angular/router';
 import { Project } from '../models/project.model';
 import { CommonModule } from '@angular/common';
+import { ImageSliderComponent } from './image-slider/image-slider.component';
 
 @Component({
   selector: 'app-booth-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ImageSliderComponent],
   templateUrl: './booth-details.component.html',
   styleUrl: './booth-details.component.scss',
 })

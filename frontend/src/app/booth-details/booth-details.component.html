@@ -1,4 +1,79 @@
-<h2>{{ booth()?.title }}</h2>
-<h4 *ngIf="booth()?.inStock">The pavilion is in stock and available for delivery</h4>
+<div class="head">
+  <h2>{{ booth()?.title }}</h2>
+  <h4 *ngIf="booth()?.inStock" class="isStock">
+    <span><img src="assets/images/doneIcon.png" width="30px" alt="done icon"></span>
+    <p>The pavilion is in stock and available for delivery</p>
+  </h4>
+</div>
 
-<img [src]="booth()?.imageUrls" alt="">
+<main>
+  <div class="img">
+    <app-image-slider [imageUrls]="booth()?.imageUrls || []"></app-image-slider>
+    <!-- || ['assets/images/budkauzLogo.png'] -->
+  </div>
+  <div class="description" *ngIf="booth() as project">
+    <table>
+      <thead>
+        <tr>
+          <td class="t-head">Specification</td>
+          <td class="t-head">Value</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="project.location">
+          <td>Location</td>
+          <td>{{ project.location }}</td>
+        </tr>
+        <tr *ngIf="project.businessType">
+          <td>Business Type</td>
+          <td>{{ project.businessType }}</td>
+        </tr>
+        <tr *ngIf="project.dimensions">
+          <td>Dimensions</td>
+          <td>{{ project.dimensions.depth }}x{{ project.dimensions.width }}x{{ project.dimensions.height }}</td>
+        </tr>
+        <tr>
+          <td>Door Type</td>
+          <td>{{ project.doorType }}</td>
+        </tr>
+        <tr>
+          <td>Foundation</td>
+          <td>{{ project.foundation }}</td>
+        </tr>
+        <tr>
+          <td>Roof</td>
+          <td>{{ project.roof }}</td>
+        </tr>
+        <tr>
+          <td>Insulation</td>
+          <td>{{ project.insulation }}</td>
+        </tr>
+        <tr>
+          <td>Floor</td>
+          <td>{{ project.floor }}</td>
+        </tr>
+        <tr>
+          <td>Facade</td>
+          <td>{{ project.facade }}</td>
+        </tr>
+        <tr *ngIf="project.electricity">
+          <td>Electricity</td>
+          <td>{{ project.electricity }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="add-feat-container" *ngIf="project.additionalFeatures">
+      <h4>Additional Features :</h4>
+      <div class="add-feat">
+        <div *ngFor="let feat of project.additionalFeatures" class="optional-features">
+          <ul>
+            <li>
+              <p><span class="plus-sign">+</span>{{ feat }}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>

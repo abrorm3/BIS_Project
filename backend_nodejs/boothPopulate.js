@@ -7,7 +7,7 @@ const uri = process.env.mongoDBURL;
 const dataToInsert = [
   {
     title: 'Pavilion for the sale of bread "RoslavlKhleb',
-    imageUrls: ["https://frankfurt.apollo.olxcdn.com/v1/files/2shxqbcj0ari2-UZ/image;s=750x1000"],
+    imageUrls: ["https://frankfurt.apollo.olxcdn.com/v1/files/2shxqbcj0ari2-UZ/image;s=750x1000","https://sovteh21.ru/wp-content/uploads/2018/01/GP_012245.jpg","https://artpavilions.ru/news/%D0%A2%D0%BE%D1%80%D0%B3%D0%BE%D0%B2%D1%8B%D0%B5%20%D0%BF%D0%B0%D0%B2%D0%B8%D0%BB%D1%8C%D0%BE%D0%BD%D1%8B%20%D0%BD%D0%B0%20%D0%B7%D0%B0%D0%BA%D0%B0%D0%B7%20%D1%86%D0%B5%D0%BD%D0%B0%20(1).jpg","https://images.satu.kz/188891971_w600_h600_188891971.jpg"],
     location: "Chirchik",
     purposeType: "coffee-shop",
     dimensions: {
@@ -101,6 +101,7 @@ const dataToInsert = [
     businessType: "service",
     productionTime: 10,
     inStock: true,
+    additionalFeatures:["Ventilation", "Conditioner", "Tables", "Metal Construction", "TV table", "stainless steel"]
   },
 ];
 
