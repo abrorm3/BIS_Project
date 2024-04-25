@@ -1,7 +1,9 @@
 <div class="head">
   <h2>{{ booth()?.title }}</h2>
   <h4 *ngIf="booth()?.inStock" class="isStock">
-    <span><img src="assets/images/doneIcon.png" width="30px" alt="done icon"></span>
+    <span
+      ><img src="assets/images/doneIcon.png" width="30px" alt="done icon"
+    /></span>
     <p>The pavilion is in stock and available for delivery</p>
   </h4>
 </div>
@@ -30,7 +32,10 @@
         </tr>
         <tr *ngIf="project.dimensions">
           <td>Dimensions</td>
-          <td>{{ project.dimensions.depth }}x{{ project.dimensions.width }}x{{ project.dimensions.height }}</td>
+          <td>
+            {{ project.dimensions.depth }} x {{ project.dimensions.width }} x
+            {{ project.dimensions.height }}
+          </td>
         </tr>
         <tr>
           <td>Door Type</td>
@@ -65,7 +70,10 @@
     <div class="add-feat-container" *ngIf="project.additionalFeatures">
       <h4>Additional Features :</h4>
       <div class="add-feat">
-        <div *ngFor="let feat of project.additionalFeatures" class="optional-features">
+        <div
+          *ngFor="let feat of project.additionalFeatures"
+          class="optional-features"
+        >
           <ul>
             <li>
               <p><span class="plus-sign">+</span>{{ feat }}</p>
@@ -74,6 +82,8 @@
         </div>
       </div>
     </div>
-
   </div>
 </main>
+<div class="footer-info">
+  <app-footer-info [price]="booth()?.price || null"></app-footer-info>
+</div>

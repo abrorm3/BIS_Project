@@ -35,7 +35,7 @@ img {
   // padding: 5px;
   // margin-bottom: 20px;
 }
-.isStock{
+.isStock {
   display: flex;
   align-items: center;
 }
@@ -112,9 +112,9 @@ tr:nth-child(even) {
 .img {
   flex: 1;
   width: 400px;
-  margin-right:30px;
+  margin-right: 30px;
 }
-.add-feat-container h4{
+.add-feat-container h4 {
   font-weight: 700;
   padding: 8px;
 }
@@ -125,4 +125,8 @@ tr:nth-child(even) {
   align-items: start;
   height: auto;
   overflow: auto;
+  font-size: 12px;
+}
+.footer-info {
+  padding: 50px 0;
 }
