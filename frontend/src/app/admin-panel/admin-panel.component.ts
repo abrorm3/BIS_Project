@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-admin-panel',
@@ -26,7 +26,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   templateUrl: './admin-panel.component.html',
   styleUrls: ['./admin-panel.component.scss'],
@@ -38,6 +38,7 @@ export class AdminPanelComponent {
   visible = signal(false);
   changetype = signal(false);
   errorMessage = signal<string>('');
+  approvalAsked = signal(false);
 
   email = signal<string>('');
   password = signal<string>('');
@@ -53,8 +54,7 @@ export class AdminPanelComponent {
     private router: Router
   ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onSubmit(form: NgForm) {
     if (form.invalid) {
@@ -70,7 +70,7 @@ export class AdminPanelComponent {
         next: (resData: AuthResponse) => {
           // console.log('Logged in!', resData.token, resData.userId);
           this.isLoading.set(false);
-          this.router.navigate(['/admin/management']);
+          this.router.navigate(['/main']);
           this.userId.set(this.authService.getUserId());
         },
         error: (errorMessage: any) => {
@@ -81,25 +81,21 @@ export class AdminPanelComponent {
       });
     }
 
+    //SIGN UP
     if (!this.isLoginMode()) {
-      //SIGN UP
-      this.authService.signup({ email, password }).subscribe({
-        next: (resData) => {
-          console.log('Registered!', resData.token);
-          this.isLoading.set(false);
-          this.askedUsername.set(true);
-          this.userId.set(this.authService.getUserId());
-          // this.router.navigate(['/feed']);
-        },
-        error: (errorMessage) => {
-          this.errorMessage.set(errorMessage.toString().split(': ')[1]);
-          this.isLoading.set(false);
-          console.error('Registration failed:', errorMessage);
-        },
-      });
+      return this.sendApprovalEmail(email, password);
     }
 
     form.reset();
+  }
+  sendApprovalEmail(email: string, password: string) {
+    this.authService.approval(email, password).subscribe({
+      next: () => {
+        this.isLoading.set(false);
+        console.log('Approval asked');
+        this.approvalAsked.set(true);
+      },
+    });
   }
   viewpassword() {
     this.visible.set(!this.visible());
@@ -108,36 +104,10 @@ export class AdminPanelComponent {
   onSwitchMode() {
     this.isLoginMode.set(!this.isLoginMode());
   }
-  setUsername(form: NgForm) {
-    console.log('logged');
-
-    const username = form.value.username;
-    this.authService.updateUsername(this.userId(), username).subscribe({
-      next: (response) => {
-        console.log('Update successful:', response);
-        this.router.navigate(['/admin/management']);
-      },
-      error: (error) => {
-        console.error('Update failed:', error);
-      },
-    });
-  }
-  checkUsernameAvailability() {
-    const username = this.username.toLowerCase();
-    this.usernameAvailability.set(null);
-
-    this.authService.checkUsernameAvailability(username).subscribe(
-      (response: any) => {
-        this.usernameAvailability.set(response.available);
-      },
-      (error) => {
-        console.error('Error checking username availability:', error);
-      }
-    );
-  }
   navigateToForgotPassword() {
     this.router.navigate(['/admin/forgot-password']);
-    console.log('asdas');
-
+  }
+  goToMainPage() {
+    this.router.navigate(['/main']);
   }
 }

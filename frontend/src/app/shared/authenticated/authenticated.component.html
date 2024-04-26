@@ -1,0 +1,9 @@
+<div *ngIf="isAuthenticated()" class="authenticated">
+  <div>
+    <p class="text-center text-xl">Authenticated admin</p>
+    <button (click)="logout()" mat-fab extended color="warn">
+      <mat-icon>logout</mat-icon>
+      Logout
+    </button>
+  </div>
+</div>

@@ -7,19 +7,24 @@ import { ForgotPasswordComponent } from './admin-panel/password-recovery/forgot-
 import { ResetPasswordComponent } from './admin-panel/password-recovery/reset-password/reset-password.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { BoothDetailsComponent } from './booth-details/booth-details.component';
+import { ApproveComponent } from './admin-panel/approve/approve.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
   { path: 'main', component: MainComponent },
-  {path:'projects', component: ProjectsComponent },
-  {path:'details/:title/:id', component: BoothDetailsComponent},
+  { path: 'projects', component: ProjectsComponent },
+  { path: 'details/:title/:id', component: BoothDetailsComponent },
   {
     path: 'admin',
     component: AdminPanelComponent,
   },
   { path: 'admin/management', component: ManagementPanelComponent },
   { path: 'admin/forgot-password', component: ForgotPasswordComponent },
-  { path: 'admin/reset-password/:id/:token', component: ResetPasswordComponent },
+  {
+    path: 'admin/reset-password/:id/:token',
+    component: ResetPasswordComponent,
+  },
+  { path: 'admin/approve/:email/:password', component: ApproveComponent },
 ];
 
 @NgModule({

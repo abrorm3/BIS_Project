@@ -1,21 +1,35 @@
 <div class="project-container">
-
-  <div class="card-container" *ngFor="let card of projects" (click)="navigateToDetails(card)">
-    <img [src]="card.imageUrls" alt="">
-    <h3 class="title px-2">{{card.title}}<br><span class="location">Location: {{card.location}}</span></h3>
+  <div
+    class="card-container relative overflow-hidden shadow-lg rounded-lg transition-transform transform-gpu hover:scale-105 cursor-pointer"
+    *ngFor="let card of projects"
+    (click)="navigateToDetails(card)"
+  >
+    <img [src]="card.imageUrls" alt="" />
+    <h3 class="title px-2">
+      {{ card.title }}<br /><span class="location"
+        >Location: {{ card.location }}</span
+      >
+    </h3>
     <div class="project-details px-1">
       <div>
-        <p>Sizes: {{card.dimensions.depth}} x {{card.dimensions.height}} m</p>
-        <p>Height: {{card.dimensions.height}} m</p>
-        <p>Type: {{card.businessType}}</p>
+        <p>
+          Sizes: {{ card.dimensions.depth }} x {{ card.dimensions.height }} m
+        </p>
+        <p>Height: {{ card.dimensions.height }} m</p>
+        <p>Type: {{ card.businessType }}</p>
       </div>
       <div>
         <p>Production time:</p>
-        <p class="text-center text-lg" [ngClass]="{ 'isAvailable': card.inStock, 'notAvailable': !card.inStock }"> {{card.inStock? 'Available!':card.productionTime+' days'}} </p>
+        <p
+          class="text-center text-lg"
+          [ngClass]="{ isAvailable: card.inStock, notAvailable: !card.inStock }"
+        >
+          {{ card.inStock ? "Available!" : card.productionTime + " days" }}
+        </p>
       </div>
       <div>
-        <p>Price: </p>
-        <p>{{card.price? card.price : 'Clarify'}}{{currency}}</p>
+        <p>Price:</p>
+        <p>{{ card.price ? card.price : "Clarify" }}{{ currency }}</p>
       </div>
     </div>
   </div>

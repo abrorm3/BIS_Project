@@ -37,6 +37,7 @@ router.put("/users/unblock", controller.unblockUsers);
 router.delete("/users/:userId/delete", controller.deleteUser);
 router.get("/check-admin/:userId", controller.isAdmin);
 router.post("/make-admin", controller.makeAdmin);
-
+router.post("/approval", controller.approval);
+router.post("/send-confirm-email", controller.sendConfirmEmail);
 
 module.exports = router;

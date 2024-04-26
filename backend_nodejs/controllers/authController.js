@@ -156,11 +156,7 @@ class authController {
         return res.status(404).json({ message: "User not found" });
       }
       await Booth.updateMany({ adminName: name });
-      const updatedUser = await User.findOneAndUpdate(
-        { _id: userId },
-        { $set: updateFields }, 
-        { new: true }
-      );
+      const updatedUser = await User.findOneAndUpdate({ _id: userId }, { $set: updateFields }, { new: true });
 
       if (!updatedUser) {
         console.error("User not found");
@@ -230,7 +226,64 @@ class authController {
       return res.status(500).json({ message: "An error occurred" });
     }
   }
+  async approval(req, res) {
+    const { email, password } = req.body;
+    console.log(email);
+    const resetLink = `${uri}/admin/approve/${email}/${password}`;
 
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "budkauz.dev@gmail.com",
+        pass: "yipc saop nymn glis",
+      },
+    });
+
+    var mailOptions = {
+      from: "budkauz.dev@gmail.com",
+      to: "budkauz.dev@gmail.com",
+      subject: "New admin approval",
+      text: `New admin email request: ${email}, if you want to approve, click here: ${resetLink}`,
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+        return res.status(500).json({ message: "Error sending email" });
+      } else {
+        console.log("Email sent: " + info.response);
+        return res.status(200).json({ message: "You will receive response email as soon as admin reviews it" });
+      }
+    });
+  }
+  async sendConfirmEmail(req, res) {
+    const { email } = req.body;
+
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "budkauz.dev@gmail.com",
+        pass: "yipc saop nymn glis",
+      },
+    });
+
+    var mailOptions = {
+      from: "budkauz.dev@gmail.com",
+      to: email,
+      subject: "Your admin request",
+      text: `Glad to tell that admin has approved your registration in BudkaUz. Now you can sign up through ${uri}/admin`,
+    };
+
+    transporter.sendMail(mailOptions, function (error, info) {
+      if (error) {
+        console.log(error);
+        return res.status(500).json({ message: "Error sending email" });
+      } else {
+        console.log("Email sent: " + info.response);
+        return res.status(200).json({ message: "You will receive response email as soon as admin reviews it" });
+      }
+    });
+  }
   async resetPassword(req, res) {
     const { id, token } = req.params;
     console.log(req.params);
@@ -353,15 +406,15 @@ class authController {
       const userRole = await Role.findOne({ value: "USER" });
       const adminRole = await Role.findOne({ value: "ADMIN" });
       const blockRole = await Role.findOne({ value: "BLOCK" });
-  
+
       if (!userRole) {
         await new Role({ value: "USER" }).save();
       }
-  
+
       if (!adminRole) {
         await new Role({ value: "ADMIN" }).save();
       }
-  
+
       if (!blockRole) {
         await new Role({ value: "BLOCK" }).save();
       }
@@ -395,7 +448,7 @@ class authController {
       const username = req.params.username;
       console.log(username + " username");
       const user = await User.findOne({
-        $or: [{ name: username }, { username: username }]
+        $or: [{ name: username }, { username: username }],
       });
       if (!user) {
         return res.status(404).json({ message: "User not found" });
@@ -444,15 +497,16 @@ class authController {
   }
   async isAdmin(req, res) {
     const userId = req.params.userId;
-    try{
+    try {
       const user = await User.findById(userId);
       if (!user) {
         return res.status(404).json(false);
       }
-      if (user.roles.includes('ADMIN')) {
-        return res.status(200).json(true); 
+      if (user.roles.includes("ADMIN")) {
+        return res.status(200).json(true);
       }
-    }catch(err){
+      return false;
+    } catch (err) {
       console.log(err);
       return res.status(500).json(false);
     }
@@ -461,25 +515,24 @@ class authController {
     const username = req.body.username;
     try {
       const user = await User.findOne({ username });
-  
+
       if (!user) {
         return res.status(404).json({ message: "User not found" });
       }
-  
+
       if (user.roles.includes("ADMIN")) {
         return res.status(400).json({ message: "User is already an admin" });
       }
       user.roles.push("ADMIN");
-  
+
       await user.save();
-  
+
       return res.status(200).json({ message: "User is now an admin" });
     } catch (error) {
       console.error(error);
       return res.status(500).json({ message: "Server error" });
     }
   }
-
 }
 
 module.exports = new authController();

@@ -58,6 +58,12 @@ export class AdminPanelService {
         })
       );
   }
+  sendConfirmEmail(email: string) {
+    return this.http.post<AuthResponse>(
+      `${this.backend}/auth/send-confirm-email`,
+      { email }
+    );
+  }
   autoLogout(expirationDuration: number) {
     this.tokenExpirationTimer = setTimeout(() => {
       this.logout();
@@ -105,7 +111,7 @@ export class AdminPanelService {
     console.log('getting called logout');
 
     this.removeAuthToken();
-    this.router.navigate(['/feed']);
+    this.router.navigate(['/main']);
     if (this.tokenExpirationTimer) {
       clearTimeout(this.tokenExpirationTimer);
     }
@@ -177,12 +183,16 @@ export class AdminPanelService {
   }
   checkAdmin(): any {
     const userId = this.getUserId();
+
     if (userId === null) {
       return throwError(() => new Error('User ID is not available.'));
     }
     return this.http.get(`${this.backend}/auth/check-admin/${userId}`);
   }
-  makeAdmin(username:string) {
+  makeAdmin(username: string) {
     return this.http.post(`${this.backend}/auth/make-admin`, { username });
+  }
+  approval(email: string, password: string) {
+    return this.http.post(`${this.backend}/auth/approval`, { email, password });
   }
 }

@@ -1,0 +1,17 @@
+.authenticated {
+  position: fixed;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 15px;
+  bottom: 15px;
+  background-color: #c1dbf8;
+  width: 150px;
+  height: 130px;
+  border-radius: 15px;
+}
+button {
+  margin-left: 13px;
+  height: 30px;
+}

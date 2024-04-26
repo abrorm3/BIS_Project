@@ -1,5 +1,5 @@
 <div class="flex justify-center items-center mx-auto">
-  <div *ngIf="!askedUsername()">
+  <div *ngIf="!approvalAsked()">
     <mat-card id="auth" class="max-w-md p-6 md:p-10 h-auth w-auth">
       <h1 class="text-center pb-5 md:pb-10 text-2xl md:text-3xl text-gray-800">
         Admin Panel
@@ -125,50 +125,11 @@
       </form>
     </mat-card>
   </div>
-  <form
-    *ngIf="askedUsername()"
-    #usernameForm="ngForm"
-    (ngSubmit)="setUsername(usernameForm)"
-    class="w-80 mx-auto p-6 bg-white shadow-md rounded-lg h-80"
-  >
-    <h2 class="text-2xl font-bold mb-2">Create Username</h2>
-    <p class="text-gray-600 mb-4">The selected username will be public</p>
-
-    <mat-form-field class="w-full">
-      <input
-        matInput
-        placeholder="Username"
-        name="username"
-        [(ngModel)]="username"
-        required
-        (input)="checkUsernameAvailability()"
-      />
-    </mat-form-field>
-    <div class="h-6">
-      <!-- Reserve space for the message -->
-      <p
-        *ngIf="usernameAvailability !== null"
-        class="text-sm mt-2"
-        [ngClass]="{
-          'text-red-500': !usernameAvailability,
-          'text-green-500': usernameAvailability
-        }"
-      >
-        {{
-          usernameAvailability()
-            ? "Username is available"
-            : "Username is not available"
-        }}
-      </p>
+  <div class="signUpReq" *ngIf="approvalAsked()">
+    <div class="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative" role="alert">
+        <span class="block sm:inline">Your signup request has been submitted. Please wait for approval from the admin.</span>
+        <button class="mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" (click)="goToMainPage()">Go to Main Page</button>
     </div>
-    <button
-      mat-raised-button
-      color="primary"
-      [disabled]="!usernameForm.valid || !usernameAvailability()"
-      type="submit"
-      class="w-full mt-4"
-    >
-      Submit
-    </button>
-  </form>
+</div>
+
 </div>
