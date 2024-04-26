@@ -1,5 +1,3 @@
-import {Types } from 'mongoose';
-
 interface Dimensions {
   width: number;
   depth: number;
@@ -20,7 +18,7 @@ export interface Project {
   floor: string;
   facade: string;
   electricity?: string;
-  additionalFeatures?:string[];
+  additionalFeatures?: string[];
   price: number;
   photo: string;
   adminName: string;
