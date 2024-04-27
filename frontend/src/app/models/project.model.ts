@@ -1,7 +1,9 @@
+import { HtmlParser } from '@angular/compiler';
+
 interface Dimensions {
-  width: number;
-  depth: number;
-  height: number;
+  width: number | null;
+  depth: number | null;
+  height: number | null;
 }
 
 export interface Project {
@@ -23,5 +25,6 @@ export interface Project {
   photo: string;
   adminName: string;
   productionTime?: number;
+  htmlContent: string;
   inStock?: boolean;
 }

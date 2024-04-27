@@ -1,0 +1,32 @@
+h2 {
+  color: #fff;
+  text-align: center;
+}
+.dimensions {
+  display: flex;
+  gap: 10px;
+}
+.is-stock p {
+  color: #fff;
+  font-size: 20px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.submit {
+  font-size: 20px;
+  margin-bottom: 35px;
+}
+::ng-deep .angular-editor-textarea {
+  color: #fff;
+}
+.description-text {
+  font-size: 20px;
+  color: #fff;
+}
+.production-suffix {
+  margin: 0 20px;
+}

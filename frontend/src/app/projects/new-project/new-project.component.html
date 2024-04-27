@@ -1,0 +1,156 @@
+<h2 class="text-2xl font-bold mb-4">Create new project</h2>
+<form #f="ngForm" class="max-w-lg mx-auto" (ngSubmit)="create(f)">
+  <!-- <mat-form-field class="w-full mb-4">
+    <mat-label>Image URLs (comma-separated)</mat-label>
+    <input matInput [(ngModel)]="project.imageUrls" name="imageUrls" required />
+  </mat-form-field> -->
+  <div class="relative flex flex-col items-center justify-center max-w-max">
+    <mat-form-field class="w-full mb-4">
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="project.title" name="title" required />
+    </mat-form-field>
+
+    <mat-form-field class="w-full mb-4">
+      <mat-label>Location</mat-label>
+      <input matInput [(ngModel)]="project.location" name="location" />
+    </mat-form-field>
+    <button
+      type="button"
+      (click)="onImageUpload()"
+      class="top-9 right-0 m-2 p-1 bg-gray text-black border-2 text-sm rounded-lg"
+      style="z-index: 1"
+    >
+      Upload Image
+    </button>
+    <mat-spinner
+      class="custom-image-spinner absolute"
+      *ngIf="isImgLoading()"
+    ></mat-spinner>
+
+    <mat-form-field class="w-full mb-4">
+      <mat-label>Business Type</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let type of businessTypes()" [value]="type">{{
+          type.type
+        }}</mat-option>
+      </mat-select>
+      <input matInput [(ngModel)]="project.businessType" name="businessType" />
+    </mat-form-field>
+    <div class="dimensions mb-4 w-full">
+      <mat-form-field>
+        <mat-label>Width</mat-label>
+        <input
+          matInput
+          [(ngModel)]="project.dimensions.width"
+          name="width"
+          type="number"
+          placeholder="Width"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Depth</mat-label>
+        <input
+          matInput
+          [(ngModel)]="project.dimensions.depth"
+          name="depth"
+          type="number"
+          placeholder="Depth"
+      /></mat-form-field>
+      <mat-form-field>
+        <mat-label>Height</mat-label>
+        <input
+          matInput
+          [(ngModel)]="project.dimensions.height"
+          name="height"
+          type="number"
+          placeholder="Height"
+        />
+      </mat-form-field>
+    </div>
+
+    <mat-form-field class="w-full mb-4">
+      <mat-label>Door Type</mat-label>
+      <input matInput [(ngModel)]="project.doorType" name="doorType" />
+    </mat-form-field>
+
+    <mat-form-field class="w-full mb-4">
+      <mat-label>Foundation</mat-label>
+      <input matInput [(ngModel)]="project.foundation" name="foundation" />
+    </mat-form-field>
+
+    <mat-form-field class="w-full mb-4">
+      <mat-label>Roof</mat-label>
+      <input matInput [(ngModel)]="project.roof" name="roof" />
+    </mat-form-field>
+
+    <mat-form-field class="w-full mb-4">
+      <mat-label>Insulation</mat-label>
+      <input matInput [(ngModel)]="project.insulation" name="insulation" />
+    </mat-form-field>
+
+    <mat-form-field class="w-full mb-4">
+      <mat-label>Floor</mat-label>
+      <input matInput [(ngModel)]="project.floor" name="floor" />
+    </mat-form-field>
+
+    <mat-form-field class="w-full mb-4">
+      <mat-label>Facade</mat-label>
+      <input matInput [(ngModel)]="project.facade" name="facade" />
+    </mat-form-field>
+
+    <mat-form-field class="w-full mb-4">
+      <mat-label>Electricity</mat-label>
+      <input matInput [(ngModel)]="project.electricity" name="electricity" />
+    </mat-form-field>
+
+    <mat-form-field class="w-full mb-4">
+      <mat-label>Additional Features</mat-label>
+      <input
+        matInput
+        [(ngModel)]="project.additionalFeatures"
+        name="additionalFeatures"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="w-full mb-4">
+      <mat-label>Price</mat-label>
+      <span matTextPrefix>$&nbsp;</span>
+      <input
+        matInput
+        [(ngModel)]="project.price"
+        name="price"
+        type="number"
+        required
+      />
+    </mat-form-field>
+
+    <div class="is-stock mb-4">
+      <mat-checkbox color="primary" [(ngModel)]="project.inStock" name="inStock"
+        ><p>In stock</p></mat-checkbox
+      >
+    </div>
+    <mat-form-field class="w-full mb-4">
+      <mat-label>Production Time</mat-label>
+      <input
+        matInput
+        [(ngModel)]="project.productionTime"
+        name="productionTime"
+        type="number"
+      />
+      <span class="production-suffix" matTextSuffix>Days</span>
+    </mat-form-field>
+    <h3 class="description-text">Description</h3>
+    <angular-editor
+      class="pr-10"
+      id="myEditor"
+      #editor
+      class="w-full mb-5 whitespace-pre-wrap"
+      [(ngModel)]="project.htmlContent"
+      name="htmlContent"
+      [config]="editorConfig"
+    ></angular-editor>
+  </div>
+  <button mat-raised-button color="primary" class="submit" type="submit">
+    Submit
+  </button>
+</form>

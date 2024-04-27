@@ -3,3 +3,12 @@ h2 {
   font-size: 45px;
   margin-bottom: 20px;
 }
+.mdc-button {
+  background-color: rgb(81, 114, 175);
+  color: #fff;
+  font-size: 18px;
+}
+.mdc-button:hover {
+  background-color: rgb(16 24 39);
+  color: #fff;
+}

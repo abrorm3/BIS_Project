@@ -8,9 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
   standalone: true,
   imports: [CommonModule, HeaderComponent, MatButtonModule],
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
 })
 export class MainComponent {
-
-  openContactDialog(){}
+  openContactDialog() {}
 }

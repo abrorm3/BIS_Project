@@ -18,6 +18,7 @@ export class AuthenticatedComponent {
 
   ngOnInit(): void {
     this.getUser();
+    console.log('sss');
   }
   getUser() {
     const userStored = localStorage.getItem('user');
@@ -25,8 +26,12 @@ export class AuthenticatedComponent {
       this.adminPanelService.getUser().subscribe({
         next: (res) => {
           if (res) {
+            console.log('trrr');
+
             this.isAuthenticated.set(true);
           } else {
+            console.log('falsee');
+
             this.isAuthenticated.set(false);
           }
         },

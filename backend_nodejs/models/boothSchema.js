@@ -85,6 +85,9 @@ const boothSchema = new mongoose.Schema({
     type: Boolean,
     required: false,
   },
+  htmlContent: {
+    type: String,
+  },
 });
 
 const Booth = mongoose.model("Booth", boothSchema);
