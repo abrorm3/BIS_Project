@@ -7,27 +7,12 @@ const boothSchema = new mongoose.Schema({
   },
   location: {
     type: String,
-    required: false,
   },
-  imageUrls: { type: [String] },
-  businessType: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "BusinessTypes",
-    required: false,
-  },
+  imageUrls: [String],
   dimensions: {
-    width: {
-      type: Number,
-      required: true,
-    },
-    depth: {
-      type: Number,
-      required: true,
-    },
-    height: {
-      type: Number,
-      required: true,
-    },
+    width: { type: Number },
+    depth: { type: Number },
+    height: { type: Number },
   },
   doorType: {
     type: String,
@@ -63,10 +48,6 @@ const boothSchema = new mongoose.Schema({
   },
   price: {
     type: Number,
-    required: true,
-  },
-  photo: {
-    type: String,
     required: true,
   },
   adminName: {

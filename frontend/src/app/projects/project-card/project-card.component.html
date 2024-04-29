@@ -13,9 +13,10 @@
     <div class="project-details px-1">
       <div>
         <p>
-          Sizes: {{ card.dimensions.depth }} x {{ card.dimensions.height }} m
+          Sizes: {{ card.dimensions?.depth }} x {{ card.dimensions?.height }} m
         </p>
-        <p>Height: {{ card.dimensions.height }} m</p>
+        <p>Height: {{ card.dimensions?.height }} m</p>
+
         <p>Type: {{ card.businessType }}</p>
       </div>
       <div>

@@ -22,7 +22,6 @@ export interface Project {
   electricity?: string;
   additionalFeatures?: string[];
   price: number;
-  photo: string;
   adminName: string;
   productionTime?: number;
   htmlContent: string;

@@ -1,7 +1,7 @@
 <div id="container-general">
   <div class="size-add flex justify-between items-center">
     <h2>Size and prices</h2>
-    <div class="newProject">
+    <div class="newProject" *ngIf="isAuthenticated()">
       <button (click)="newProject()" mat-stroked-button color="primary">
         <mat-icon>add</mat-icon>Add project
       </button>

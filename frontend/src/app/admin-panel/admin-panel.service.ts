@@ -70,43 +70,6 @@ export class AdminPanelService {
     }, expirationDuration * 2000);
   }
 
-  updateUsername(userId: string | null, newUsername: string): Observable<any> {
-    const requestBody = { userId, newUsername };
-    console.log(requestBody.userId + ' from service');
-    console.log(requestBody.newUsername + ' from service');
-
-    return this.http
-      .post(`${this.backend}/auth/update-username`, requestBody)
-      .pipe(
-        catchError(this.handleError),
-        map((response) => {
-          console.log(response + ' got response!!');
-          return response;
-        })
-      );
-  }
-  updateAllInfo(
-    userId: string,
-    name: string,
-    email: string,
-    aboutUser: string,
-    profilePictureUrl: string,
-    username: string
-  ): Observable<any> {
-    console.log('lastt ' + profilePictureUrl);
-
-    const requestBody = {
-      userId,
-      name,
-      email,
-      aboutUser,
-      profilePictureUrl,
-      username,
-    };
-
-    return this.http.post(`${this.backend}/auth/update-user-info`, requestBody);
-  }
-
   logout() {
     console.log('getting called logout');
 

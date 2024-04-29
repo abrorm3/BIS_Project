@@ -13,6 +13,8 @@ import { editorConfig } from './editor-config';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { MatButtonModule } from '@angular/material/button';
 import { ImageUploadService } from 'src/app/shared/image-upload.service';
+import { MatIconModule } from '@angular/material/icon';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-project',
@@ -27,6 +29,7 @@ import { ImageUploadService } from 'src/app/shared/image-upload.service';
     CommonModule,
     AngularEditorModule,
     FormsModule,
+    MatIconModule,
   ],
   templateUrl: './new-project.component.html',
   styleUrl: './new-project.component.scss',
@@ -36,7 +39,6 @@ export class NewProjectComponent implements OnInit {
     _id: '',
     title: '',
     location: '',
-    imageUrls: [],
     businessType: '',
     dimensions: { width: 0, depth: 0, height: 0 },
     doorType: '',
@@ -48,18 +50,22 @@ export class NewProjectComponent implements OnInit {
     electricity: '',
     additionalFeatures: [],
     price: 0,
-    photo: '',
-    adminName: '',
+    imageUrls: [],
     productionTime: 0,
     inStock: false,
     htmlContent: '',
+    adminName: localStorage.getItem('email') || '',
   };
   editorConfig = editorConfig;
   businessTypes = signal<BusinessTypes[] | null>(null);
   isImgLoading = signal<boolean>(false);
+  uploadedImageUrl = signal<string | null>(null);
+  errorMessage = signal<string | null>(null);
+
   constructor(
     private projectsService: ProjectsService,
-    private imageUploadService: ImageUploadService
+    private imageUploadService: ImageUploadService,
+    private route: Router
   ) {}
 
   ngOnInit(): void {
@@ -70,32 +76,44 @@ export class NewProjectComponent implements OnInit {
   }
   create(data: NgForm) {
     console.log(data.value);
+    console.log(this.project.adminName);
+
+    this.projectsService.createProject(this.project).subscribe(
+      (res) => {
+        console.log(res);
+        this.route.navigate(['/projects']);
+      },
+      (error) => {
+        console.log(error);
+
+        this.errorMessage = error.message;
+      }
+    );
   }
+
   onImageUpload() {
     const inputElement = document.createElement('input');
     inputElement.type = 'file';
     inputElement.accept = 'image/*';
+    // inputElement.multiple = true;
 
-    // Listen for file selection
     inputElement.addEventListener('change', (event) => {
       const file = (event.target as HTMLInputElement)?.files?.[0];
 
       if (file) {
         this.isImgLoading.set(true);
-        // Upload the image to Firebase Storage
         this.imageUploadService
           .uploadImage(file, `${new Date()}/${this.project.title}`)
           .then((downloadUrl) => {
-            // Inserting the image URL into the editor
             const html = `<img style="max-height: 50vh;" src="${downloadUrl}" alt="Uploaded Image" />`;
             this.isImgLoading.set(false);
-            // Using execCommand to insert HTML at the current cursor position, but yeah it is deprecated
+            this.project.imageUrls.push(downloadUrl);
+            console.log(downloadUrl);
+
             document.execCommand('insertHTML', false, html);
           });
       }
     });
-
-    // Triggering the file input dialog
     inputElement.click();
   }
 }

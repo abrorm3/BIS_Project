@@ -17,24 +17,39 @@
     <button
       type="button"
       (click)="onImageUpload()"
-      class="top-9 right-0 m-2 p-1 bg-gray text-black border-2 text-sm rounded-lg"
+      class="top-9 right-0 mb-5 p-3 bg-gray border-2 text-lg rounded-lg"
       style="z-index: 1"
+      [ngClass]="{ 'text-red': isImgLoading(), 'text-white': !isImgLoading() }"
+      [disabled]="isImgLoading()"
     >
       Upload Image
+      <mat-icon class="pt-1">image</mat-icon>
     </button>
     <mat-spinner
       class="custom-image-spinner absolute"
       *ngIf="isImgLoading()"
     ></mat-spinner>
+    <div
+      class="flex gap-2"
+      *ngIf="project.imageUrls && project.imageUrls.length > 0"
+    >
+      <div *ngFor="let image of project.imageUrls">
+        <img
+          class="mb-4"
+          [src]="image"
+          alt="Uploaded Image"
+          style="max-height: 30vh"
+        />
+      </div>
+    </div>
 
     <mat-form-field class="w-full mb-4">
       <mat-label>Business Type</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let type of businessTypes()" [value]="type">{{
+      <mat-select [(ngModel)]="project.businessType" name="businessType">
+        <mat-option *ngFor="let type of businessTypes()" [value]="type.type">{{
           type.type
         }}</mat-option>
       </mat-select>
-      <input matInput [(ngModel)]="project.businessType" name="businessType" />
     </mat-form-field>
     <div class="dimensions mb-4 w-full">
       <mat-form-field>
@@ -95,7 +110,7 @@
 
     <mat-form-field class="w-full mb-4">
       <mat-label>Facade</mat-label>
-      <input matInput [(ngModel)]="project.facade" name="facade" />
+      <input matInput required [(ngModel)]="project.facade" name="facade" />
     </mat-form-field>
 
     <mat-form-field class="w-full mb-4">
@@ -153,4 +168,5 @@
   <button mat-raised-button color="primary" class="submit" type="submit">
     Submit
   </button>
+  <p *ngIf="errorMessage()">{{ errorMessage() }}</p>
 </form>

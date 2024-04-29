@@ -63,7 +63,7 @@ export class AdminPanelComponent {
     const email = form.value.email.toLowerCase();
     const password = form.value.password;
     this.isLoading.set(true);
-
+    localStorage.setItem('email', email);
     if (this.isLoginMode()) {
       //LOGIN
       this.authService.login({ email, password }).subscribe({

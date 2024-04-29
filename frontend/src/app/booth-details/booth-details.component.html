@@ -1,5 +1,10 @@
 <div class="head">
-  <h2>{{ booth()?.title }}</h2>
+  <div class="header">
+    <h2>{{ booth()?.title }}</h2>
+    <button (click)="deleteProject()" mat-flat-button color="warn">
+      <mat-icon>delete</mat-icon>Delete
+    </button>
+  </div>
   <h4 *ngIf="booth()?.inStock" class="isStock">
     <span
       ><img src="assets/images/doneIcon.png" width="30px" alt="done icon"
