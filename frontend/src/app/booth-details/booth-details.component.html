@@ -1,7 +1,12 @@
 <div class="head">
   <div class="header">
     <h2>{{ booth()?.title }}</h2>
-    <button (click)="deleteProject()" mat-flat-button color="warn">
+    <button
+      *ngIf="isAuthenticated()"
+      (click)="deleteProject()"
+      mat-flat-button
+      color="warn"
+    >
       <mat-icon>delete</mat-icon>Delete
     </button>
   </div>
@@ -91,4 +96,75 @@
 </main>
 <div class="footer-info">
   <app-footer-info [price]="booth()?.price || null"></app-footer-info>
+</div>
+<div class="option-list my-7">
+  <p
+    [ngClass]="{ active: selectedInfo() === 'description' }"
+    (click)="selectedInfo.set('description')"
+  >
+    Description
+  </p>
+  <p
+    (click)="selectedInfo.set('more-photos')"
+    [ngClass]="{ active: selectedInfo() === 'more-photos' }"
+  >
+    More photos
+  </p>
+  <p
+    (click)="selectedInfo.set('other-projects')"
+    [ngClass]="{ active: selectedInfo() === 'other-projects' }"
+  >
+    Other dimensions
+  </p>
+  <p
+    (click)="selectedInfo.set('how-to-buy')"
+    [ngClass]="{ active: selectedInfo() === 'how-to-buy' }"
+  >
+    Purchase
+  </p>
+</div>
+<div class="inner-options mx-[100px]">
+  <div *ngIf="selectedInfo() === 'description'" class="description-text">
+    <div class="text-white" [innerHTML]="sanitizedContent"></div>
+  </div>
+  <div *ngIf="selectedInfo() === 'morePhotos'" class="more-photos">
+    <h1>hey</h1>
+    <app-image-slider [imageUrls]="booth()?.imageUrls || []"></app-image-slider>
+  </div>
+  <div *ngIf="selectedInfo() === 'other-projects'" class="other-projects">
+    <app-project-card [projects]="projects()"></app-project-card>
+  </div>
+  <div
+    *ngIf="selectedInfo() === 'how-to-buy'"
+    class="how-to bg-gray-100 p-8 rounded-lg shadow-md"
+  >
+    <h3 class="text-xl font-bold mb-4">How to buy pavilion</h3>
+    <p class="mb-4">
+      To buy a pavilion, call us or send a request through the form on the
+      website - we will call you back.
+    </p>
+    <p class="mb-4">
+      By phone you can check the
+      <span class="active-text px-1"
+        ><a href="/projects">availability of a pavilion</a></span
+      >
+      for purchase, or discuss the possibility of manufacturing a pavilion to
+      suit your requirements.
+    </p>
+    <h4 class="text-lg font-semibold mb-2">Contacts</h4>
+    <ul class="list-disc pl-6 mb-4">
+      <li>
+        Phone number:
+        <span class="active-text px-1">+998 (90) 999-22-999</span>
+      </li>
+      <li>Workshop address: Tashkent Region, Baytkurgan, 2/14</li>
+      <li>Working hours: from 9:00 to 18:00</li>
+      <li>
+        Email:
+        <a href="mailto:budkauz.dev@gmail.com" class="active-text"
+          >budkauz.dev&#64;gmail.com</a
+        >
+      </li>
+    </ul>
+  </div>
 </div>

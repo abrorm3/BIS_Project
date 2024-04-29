@@ -1,0 +1,41 @@
+<div
+  class="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-gray-900 bg-opacity-50 z-50"
+>
+  <div class="bg-white p-6 rounded-lg shadow-md z-50">
+    <h2 class="text-2xl font-bold mb-4">Call you back?</h2>
+    <form class="space-y-4">
+      <div>
+        <label for="name" class="block font-semibold">Enter your name:</label>
+        <input
+          type="text"
+          [(ngModel)]="name.value"
+          id="name"
+          name="name"
+          class="border border-gray-300 rounded-md p-2 w-full"
+        />
+      </div>
+      <div>
+        <label for="phoneNumber" class="block font-semibold"
+          >Enter your phone number:</label
+        >
+        <input
+          [(ngModel)]="phone.value"
+          type="tel"
+          id="phoneNumber"
+          name="phoneNumber"
+          class="border border-gray-300 rounded-md p-2 w-full"
+        />
+      </div>
+      <div class="btns flex items-center gap-5">
+        <button
+          (click)="onSubmit()"
+          type="button"
+          class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md"
+        >
+          Send request
+        </button>
+        <mat-icon (click)="closeModal()">close</mat-icon>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,45 +1,48 @@
-#intro{
+#intro {
   display: flex;
   justify-content: space-around;
   align-items: center;
   position: relative;
   height: 50vh;
 }
-#intro .intro-info{
+#intro .intro-info {
   flex: 1.5;
   width: 550px;
   margin-bottom: 4rem;
 }
-.main-image{
+.main-image {
   flex: 2;
   width: 60%;
 }
-.mat-raised-button{
-  color:red;
+.mat-raised-button {
+  color: red;
 }
-.action-main{
+.action-main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  button{
-    flex:1;
+  button {
+    flex: 1;
   }
-  p{
-    flex:2;
-    span{
+  p {
+    flex: 2;
+    span {
       cursor: pointer;
-      background-color:#e31a22;
-      color:#fff;
+      background-color: #e31a22;
+      color: #fff;
       padding: 0 3px;
       border-radius: 5px;
     }
   }
 }
-.mdc-button{
+.mdc-button {
   background-color: rgb(27 33 44);
-  color:#fff;
+  color: #fff;
 }
-.mdc-button:hover{
+.mdc-button:hover {
   background-color: #fff;
-  color:rgb(27 33 44);
+  color: rgb(27 33 44);
+}
+app-call-form {
+  z-index: 10000;
 }

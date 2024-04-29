@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './image-slider.component.html',
-  styleUrl: './image-slider.component.scss'
+  styleUrl: './image-slider.component.scss',
 })
 export class ImageSliderComponent {
   @Input() imageUrls: string[] = [];
@@ -38,5 +38,4 @@ export class ImageSliderComponent {
       };
     }
   }
-
 }

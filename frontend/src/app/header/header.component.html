@@ -1,7 +1,8 @@
-<!-- <div class="heading-frame bg-gray-800 p-4 rounded-md">
-  <h2 class="text-2xl font-bold text-white">Calculator</h2>
-</div> -->
-<!-- header.component.html -->
+<app-call-form
+  (closeModalDialog)="closeForm()"
+  class="z-50"
+  *ngIf="isContactOpened()"
+></app-call-form>
 <div
   class="header-container bg-gray-900 text-white p-4 flex justify-between rounded-2xl"
 >
@@ -12,7 +13,17 @@
     <div
       class="upper-side w-full px-4 mb-4 flex justify-end gap-5 items-center"
     >
-      <button mat-raised-button color="accent">Shall we call?</button>
+      <button
+        *ngIf="isAuthenticated()"
+        (click)="openApplications()"
+        mat-raised-button
+        color="primary"
+      >
+        Applications
+      </button>
+      <button (click)="openContactDialog()" mat-raised-button color="accent">
+        Shall we call?
+      </button>
       <div class="contacts">
         <p class="mt-2">Tashkent region, Baytkurgan</p>
         <p>Call +998977020330</p>

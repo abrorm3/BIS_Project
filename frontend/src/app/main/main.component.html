@@ -1,3 +1,9 @@
+<app-call-form
+  (closeModalDialog)="closeForm()"
+  class="z-50"
+  *ngIf="isContactOpened()"
+></app-call-form>
+
 <div id="container-general" class="bg-slate-100">
   <div id="intro">
     <div class="intro-info">
@@ -11,7 +17,13 @@
         competitors thanks to proprietary methods.
       </p>
       <div class="action-main mt-[50px] mx-2">
-        <button mat-raised-button color="primary">Module sizes and prices</button>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="navigateToProjects()"
+        >
+          Module sizes and prices
+        </button>
         <p class="mx-4">
           Or
           <span (click)="openContactDialog()" class="span-link">contact</span>

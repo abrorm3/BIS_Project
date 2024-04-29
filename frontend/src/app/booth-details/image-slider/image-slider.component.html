@@ -1,16 +1,21 @@
-  <div class="slider">
-    <div class="slides">
-      <img *ngFor="let url of imageUrls; let i = index"
-          [src]="url"
-          [alt]="'Slide ' + i"
-          [class.active]="isCurrentSlide(i)"
-          class="slide">
-    </div>
-
-    <div class="slider-controls">
-      <label *ngFor="let url of imageUrls; let i = index"
-            [for]="'slide' + i"
-            (click)="setCurrentSlide(i)"
-            [class.active]="isCurrentSlide(i)" [class.inactive]="!isCurrentSlide(i)"></label>
-    </div>
+<div class="slider">
+  <div class="slides">
+    <img
+      *ngFor="let url of imageUrls; let i = index"
+      [src]="url"
+      [alt]="'Slide ' + i"
+      [class.active]="isCurrentSlide(i)"
+      class="slide"
+    />
   </div>
+
+  <div class="slider-controls">
+    <label
+      *ngFor="let url of imageUrls; let i = index"
+      [for]="'slide' + i"
+      (click)="setCurrentSlide(i)"
+      [class.active]="isCurrentSlide(i)"
+      [class.inactive]="!isCurrentSlide(i)"
+    ></label>
+  </div>
+</div>

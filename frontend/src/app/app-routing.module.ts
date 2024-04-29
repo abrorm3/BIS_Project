@@ -9,12 +9,14 @@ import { ProjectsComponent } from './projects/projects.component';
 import { BoothDetailsComponent } from './booth-details/booth-details.component';
 import { ApproveComponent } from './admin-panel/approve/approve.component';
 import { NewProjectComponent } from './projects/new-project/new-project.component';
+import { ApplicationsComponent } from './call-form/applications/applications.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/main', pathMatch: 'full' },
   { path: 'main', component: MainComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'create-project', component: NewProjectComponent },
+  { path: 'applications', component: ApplicationsComponent },
   { path: 'details/:title/:id', component: BoothDetailsComponent },
   {
     path: 'admin',
