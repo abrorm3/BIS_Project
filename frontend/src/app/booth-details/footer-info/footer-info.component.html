@@ -1,3 +1,8 @@
+<app-call-form
+  (closeModalDialog)="closeForm()"
+  class="z-50"
+  *ngIf="isContactOpened()"
+></app-call-form>
 <footer>
   <div class="price-section">
     <p>Pavilion price (turnkey) :</p>
@@ -19,5 +24,7 @@
       <p class="del-additional">Delivery via crane manipulator and assembly</p>
     </div>
   </div>
-  <button mat-raised-button color="accent">Shall we call?</button>
+  <button mat-raised-button color="accent" (click)="openContactDialog()">
+    Shall we call?
+  </button>
 </footer>

@@ -2,6 +2,7 @@
   <div class="header">
     <h2>{{ booth()?.title }}</h2>
     <button
+      class="mb-5"
       *ngIf="isAuthenticated()"
       (click)="deleteProject()"
       mat-flat-button
